@@ -25,3 +25,42 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
 # don't automatically convert emoticons to emoji
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticEmojiSubstitutionEnablediMessage" -bool false
+
+
+####################
+# Power management #
+####################
+
+# Set the deep sleep delay to 24h instead of 1h10min:
+sudo pmset -a standbydelay 86400
+
+############
+# Security #
+############
+
+# Disable checking to open newly downloaded apps
+defaults write com.apple.LaunchServices LSQuarantine -bool false
+
+######
+# UI #
+######
+
+# Disable Notification Center and remove the menu bar icon
+launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
+
+
+#########
+# Input #
+#########
+
+# Disable press-and-hold for keys in favor of key repeat
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+
+
+##########
+# Finder #
+##########
+
+# When performing a search, search the current folder by default
+defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+
